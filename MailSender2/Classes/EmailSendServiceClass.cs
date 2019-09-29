@@ -14,17 +14,20 @@ namespace MailSender2.Classes
         #region vars
         private string strLogin; // email, c которого будет рассылаться почта
         private string strPassword; // пароль к email, с которого будет рассылаться почта
-        private string strSmtp = "smtp.yandex.ru"; // smtp-server
-        private int iSmtpPort = 25; // порт для smtp-server
+        private string strSmtp;// = "smtp.yandex.ru"; // smtp-server
+        private int iSmtpPort;// = 25; // порт для smtp-server
         private string strBody; // текст письма для отправки
         private string strSubject; // тема письма для отправки
         #endregion
-        public EmailSendServiceClass(string sLogin, string sPassword, string sBody, string sSubject)
+        public EmailSendServiceClass(string sLogin, string sPassword, string sBody, string sSubject,
+            string sSmtp, int sPort)
         {
             strLogin = sLogin;
             strPassword = sPassword;
             strBody = sBody;
             strSubject = sSubject;
+            iSmtpPort = sPort;
+            strSmtp = sSmtp;
         }
 
         private void SendMail(string mail,string name) // Отправка email конкретному адресату

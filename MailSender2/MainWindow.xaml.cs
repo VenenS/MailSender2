@@ -46,6 +46,8 @@ namespace MailSender2
             string strSubject = SubjectPost.Text;
             string strLogin = cbSenderSelect.Text;
             string strPassword = cbSenderSelect.SelectedValue.ToString();
+            string smtpServ = cbSmtpSelect.Text;
+            int sPort = int.Parse(((KeyValuePair<string, int>)cbSmtpSelect.SelectedItem).Value.ToString());
             if(string.IsNullOrEmpty(strLogin))
             {
                 MessageBox.Show("Выберите отправителя");
@@ -61,7 +63,8 @@ namespace MailSender2
                 MessageBox.Show("Письмо не заполнено");
                 return;
             }
-            Classes.EmailSendServiceClass emailSender = new Classes.EmailSendServiceClass(strLogin, strPassword, strBody, strSubject);
+            Classes.EmailSendServiceClass emailSender = new Classes.EmailSendServiceClass(strLogin, strPassword, 
+                strBody, strSubject, smtpServ, sPort);
              emailSender.SendMails((IQueryable<Classes.Email>)dgEmails.ItemsSource);
         }
 
