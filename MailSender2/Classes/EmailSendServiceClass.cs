@@ -19,10 +19,12 @@ namespace MailSender2.Classes
         private string strBody; // текст письма для отправки
         private string strSubject; // тема письма для отправки
         #endregion
-        public EmailSendServiceClass(string sLogin, string sPassword)
+        public EmailSendServiceClass(string sLogin, string sPassword, string sBody, string sSubject)
         {
             strLogin = sLogin;
             strPassword = sPassword;
+            strBody = sBody;
+            strSubject = sSubject;
         }
 
         private void SendMail(string mail,string name) // Отправка email конкретному адресату
@@ -30,7 +32,7 @@ namespace MailSender2.Classes
             using (MailMessage mm = new MailMessage(strLogin, mail))
             {
                 mm.Subject = strSubject;
-                mm.Body = "Hello!";
+                mm.Body = strBody+" от "+DateTime.Now;
                 mm.IsBodyHtml = false;
                 SmtpClient sc = new SmtpClient(strSmtp, iSmtpPort);
                 sc.EnableSsl = true;

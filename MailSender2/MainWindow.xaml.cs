@@ -43,6 +43,7 @@ namespace MailSender2
         private void BtnSendAtOnce_Click(object sender, RoutedEventArgs e)
         {
             string strBody = BodyPost.Text;
+            string strSubject = SubjectPost.Text;
             string strLogin = cbSenderSelect.Text;
             string strPassword = cbSenderSelect.SelectedValue.ToString();
             if(string.IsNullOrEmpty(strLogin))
@@ -60,7 +61,7 @@ namespace MailSender2
                 MessageBox.Show("Письмо не заполнено");
                 return;
             }
-            Classes.EmailSendServiceClass emailSender = new Classes.EmailSendServiceClass(strLogin, strPassword);
+            Classes.EmailSendServiceClass emailSender = new Classes.EmailSendServiceClass(strLogin, strPassword, strBody, strSubject);
              emailSender.SendMails((IQueryable<Classes.Email>)dgEmails.ItemsSource);
         }
 
