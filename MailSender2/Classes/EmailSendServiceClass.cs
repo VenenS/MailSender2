@@ -32,7 +32,7 @@ namespace MailSender2.Classes
             using (MailMessage mm = new MailMessage(strLogin, mail))
             {
                 mm.Subject = strSubject;
-                mm.Body = strBody+" от "+DateTime.Now;
+                mm.Body = strBody+"\nПисьмо от "+DateTime.Now;
                 mm.IsBodyHtml = false;
                 SmtpClient sc = new SmtpClient(strSmtp, iSmtpPort);
                 sc.EnableSsl = true;
@@ -42,10 +42,14 @@ namespace MailSender2.Classes
                 try
                 {
                     sc.Send(mm);
+                    View.SendEndWindow sendEnd = new View.SendEndWindow();
+                    sendEnd.ShowDialog();
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Невозможно отправить письмо " + ex.ToString());
+                    View.ErorrWindow erorrWindow = new View.ErorrWindow();
+                    erorrWindow.ShowDialog();
+                    MessageBox.Show("Невозможно отправить письмо " + ex.ToString());                   
                 }
             }
         }

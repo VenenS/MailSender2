@@ -14,10 +14,7 @@
         <ImageBrush ImageSource="Resources/derevo-temnoe-derevo-wood.jpg"/>
     </Window.Background>
     <DockPanel Margin="0,0,0,1">
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="145*"/>
-            <ColumnDefinition Width="847*"/>
-        </Grid.ColumnDefinitions>-->
+        
         <Menu DockPanel.Dock="Top" Background="#00F0F0F0" BorderBrush="Black" Foreground="White">
             <MenuItem Header="Файл" Foreground="White">
                 <MenuItem Header="Создать" Foreground="White" BorderBrush="#FF1E1E1E" Background="#FF1E1E1E"/>
