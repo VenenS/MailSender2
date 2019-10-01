@@ -17,8 +17,8 @@ namespace MailSender2.Classes
         private string strPassword; // пароль к email, с которого будет рассылаться почта
         private string strSmtp;// = "smtp.yandex.ru"; // smtp-server
         private int iSmtpPort;// = 25; // порт для smtp-server
-        private string strBody; // текст письма для отправки
-        private string strSubject; // тема письма для отправки
+        public string strBody; // текст письма для отправки
+        public string strSubject; // тема письма для отправки
         #endregion
         public EmailSendServiceClass(string sLogin, string sPassword, string sBody, string sSubject,
             string sSmtp, int sPort)

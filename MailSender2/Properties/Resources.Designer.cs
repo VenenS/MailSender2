@@ -113,16 +113,6 @@ namespace MailSender2.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap hohloma_uzory_uzor_cvety_fon {
-            get {
-                object obj = ResourceManager.GetObject("hohloma_uzory_uzor_cvety_fon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap rendering_abstrakciya_figury {
             get {
                 object obj = ResourceManager.GetObject("rendering_abstrakciya_figury", resourceCulture);

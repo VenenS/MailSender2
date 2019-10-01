@@ -12,7 +12,6 @@ namespace MailSender2.Classes
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
             int IntValue = 0;
-            ValidationResult result = null;
             try
             {
                 IntValue = Convert.ToInt16(value);

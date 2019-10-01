@@ -8,13 +8,12 @@ using MailSender2.Classes;
 
 namespace MailSender2.Services
 {
-
     public interface IDataAccessService
     {
         ObservableCollection<Email> GetEmails();
         int CreateEmail(Email email);
     }
-    public class DataAccessService:IDataAccessService
+    public class DataAccessService : IDataAccessService
     {
         EmailsDataContext context;
         public DataAccessService()
@@ -23,14 +22,14 @@ namespace MailSender2.Services
         }
         public ObservableCollection<Email> GetEmails()
         {
-            ObservableCollection<Email> Emails = new ObservableCollection<Email>();
-            foreach(var item in context.Email)
+            ObservableCollection<Email> Emails = new
+            ObservableCollection<Email>();
+            foreach (var item in context.Email)
             {
                 Emails.Add(item);
             }
             return Emails;
         }
-
         public int CreateEmail(Email email)
         {
             context.Email.InsertOnSubmit(email);
@@ -39,3 +38,4 @@ namespace MailSender2.Services
         }
     }
 }
+

@@ -38,7 +38,7 @@ namespace MailSender2.Classes
         /// <param name="dtSend"></param>
         /// <param name="emailSender"></param>
         /// <param name="emails"></param>
-        public void SendEmails(DateTime dtSend, EmailSendServiceClass emailSender,
+        public void SendEmails(EmailSendServiceClass emailSender,
             ObservableCollection<Email> emails)
         {
             this.emailSender = emailSender; // Экземпляр класса, отвечающего за отправку писем
@@ -51,11 +51,28 @@ namespace MailSender2.Classes
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if(dtSend.ToShortTimeString()==DateTime.Now.ToShortTimeString())
+            if (dicDates.Count == 0)
             {
-                emailSender.SendMails(emails);
                 timer.Stop();
                 MessageBox.Show("Письма отправлены");
+            }
+            else if (dicDates.Keys.First<DateTime>().ToShortTimeString() == DateTime.Now.ToShortTimeString())
+            {
+                emailSender.strBody = dicDates[dicDates.Keys.First<DateTime>()];
+                emailSender.strSubject = $"Рассылка от {dicDates.Keys.First<DateTime>().ToShortTimeString()}";
+                emailSender.SendMails(emails);
+                dicDates.Remove(dicDates.Keys.First<DateTime>());
+            }
+        }
+
+        Dictionary<DateTime, string> dicDates = new Dictionary<DateTime, string>();
+        public Dictionary<DateTime, string> DatesEmailTexts
+        {
+            get { return dicDates; }
+            set
+            {
+                dicDates = value;
+                dicDates = dicDates.OrderBy(pair => pair.Key).ToDictionary(pair => pair.Key, pair => pair.Value);
             }
         }
     }
