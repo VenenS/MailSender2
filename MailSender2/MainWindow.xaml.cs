@@ -4,6 +4,8 @@ using System.Net.Mail;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using MailSender2.ViewModel;
+using MailSender2.Classes;
 
 namespace MailSender2
 {
@@ -21,8 +23,6 @@ namespace MailSender2
             cbSmtpSelect.ItemsSource = Classes.VariablesSmtp.Smtpserv;
             cbSmtpSelect.DisplayMemberPath = "Key";
             cbSmtpSelect.SelectedValue = "Value";
-            Classes.DBClass db = new Classes.DBClass();
-            dgEmails.ItemsSource = db.Emails;
         }
 
         private void ExitMenuItem_OnClick(object sender, RoutedEventArgs e)
@@ -37,7 +37,24 @@ namespace MailSender2
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
-
+            SchedulerClass sc = new SchedulerClass();
+            TimeSpan tsSendTime = sc.GetSendTime(tbTimePicker.Text);
+            if(tsSendTime==new TimeSpan())
+            {
+                MessageBox.Show("Некоректный формат даты");
+                return;
+            }
+            DateTime dtSendTime = (cldSchedulDateTimes.SelectedDate ?? DateTime.Today).Add(tsSendTime);
+            if(dtSendTime<DateTime.Now)
+            {
+                MessageBox.Show("Дата и время отправки не могут быть раньше, чем настоящее время!");
+                return;
+            }
+            EmailSendServiceClass emailSender = new EmailSendServiceClass(cbSenderSelect.Text,
+                cbSenderSelect.SelectedValue.ToString(), BodyPost.Text, SubjectPost.Text, cbSmtpSelect.Text,
+                int.Parse(((KeyValuePair<string, int>)cbSenderSelect.SelectedItem).Value.ToString()));
+            var locator = (ViewModelLocator)FindResource("Locator");
+            sc.SendEmails(emailSender, locator.Main.Emails);
         }
 
         private void BtnSendAtOnce_Click(object sender, RoutedEventArgs e)
@@ -65,7 +82,8 @@ namespace MailSender2
             }
             Classes.EmailSendServiceClass emailSender = new Classes.EmailSendServiceClass(strLogin, strPassword, 
                 strBody, strSubject, smtpServ, sPort);
-             emailSender.SendMails((IQueryable<Classes.Email>)dgEmails.ItemsSource);
+            var locator = (ViewModelLocator)FindResource("Locator");
+            emailSender.SendMails(locator.Main.Emails);
         }
 
         private void TabSwitcher_Back(object sender, RoutedEventArgs e)

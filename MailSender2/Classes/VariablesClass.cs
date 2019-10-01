@@ -16,7 +16,7 @@ namespace MailSender2.Classes
         private static Dictionary<string, string> dicSenders = new Dictionary<string, string>()
         {
             {"79257443993@yandex.ru" , CodePassword.getPassword ( "{3t1l2m6" ) },
-            {"sok74@yandex.ru" , CodePassword.getPassword ( "{3t1l2m6" ) }
+            {"sok74@yandex.ru" , CodePassword.getPassword ( "{3t1l2m6" ) },
         };
     }
     public static class VariablesSmtp
@@ -27,7 +27,7 @@ namespace MailSender2.Classes
         }
         private static Dictionary<string, int> dicServers = new Dictionary<string, int>()
         {
-            {"smtp.mail.ru",465 },
+            {"smtp.mail.ru", 25 },
             {"smtp.yandex.ru", 25 },
             {"smtp.gmail.com", 25 }
         };

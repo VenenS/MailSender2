@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace MailSender2.Classes
 {
@@ -57,7 +58,7 @@ namespace MailSender2.Classes
             }
         }
 
-        public void SendMails(IQueryable<Email> emails)
+        public void SendMails(ObservableCollection<Email> emails)
         {
             foreach (Email email in emails)
             {
