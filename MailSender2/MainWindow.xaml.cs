@@ -17,10 +17,10 @@ namespace MailSender2
         public MainWindow()
         {
             InitializeComponent();
-            cbSenderSelect.ItemsSource = Classes.VariablesClass.Senders;
+            cbSenderSelect.ItemsSource = VariablesClass.Senders;
             cbSenderSelect.DisplayMemberPath = "Key";
             cbSenderSelect.SelectedValuePath = "Value";
-            cbSmtpSelect.ItemsSource = Classes.VariablesSmtp.Smtpserv;
+            cbSmtpSelect.ItemsSource = VariablesSmtp.Smtpserv;
             cbSmtpSelect.DisplayMemberPath = "Key";
             cbSmtpSelect.SelectedValue = "Value";
         }

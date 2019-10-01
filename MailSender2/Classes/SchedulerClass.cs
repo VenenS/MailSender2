@@ -42,7 +42,6 @@ namespace MailSender2.Classes
             ObservableCollection<Email> emails)
         {
             this.emailSender = emailSender; // Экземпляр класса, отвечающего за отправку писем
-            this.dtSend = dtSend;
             this.emails = emails;
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 1);
