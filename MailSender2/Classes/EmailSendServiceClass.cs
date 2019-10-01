@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace MailSender2.Classes
 {
-    class EmailSendServiceClass
+    public class EmailSendServiceClass
     {
         #region vars
         private string strLogin; // email, c которого будет рассылаться почта

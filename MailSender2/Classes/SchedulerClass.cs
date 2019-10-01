@@ -9,7 +9,7 @@ using System.Windows.Threading;
 
 namespace MailSender2.Classes
 {
-    class SchedulerClass
+    public class SchedulerClass
     {
         DispatcherTimer timer = new DispatcherTimer(); // таймер
         EmailSendServiceClass emailSender; // экземпляр класса, отвечающего за отправку писем
