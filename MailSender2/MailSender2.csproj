@@ -92,6 +92,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\DataValidation.cs" />
+    <Compile Include="Classes\Email.cs" />
     <Compile Include="Classes\SchedulerClass.cs" />
     <Compile Include="Services\DataAccesService.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
