@@ -16,7 +16,7 @@ namespace Common
     public partial class EmailsModelContainer : DbContext
     {
         public EmailsModelContainer()
-            : base("name=EmailsContainer")
+            : base("name=EmailsModelContainer")
         {
         }
     
